@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153015877}
   - component: {fileID: 153015878}
+  - component: {fileID: 153015879}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -226,6 +227,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.47399163, y: 0.11127734}
   m_EdgeRadius: 0
+--- !u!114 &153015879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153015876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507efa0ed5dfdc749ae67dbdf80caece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +350,7 @@ GameObject:
   - component: {fileID: 780107220}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -40,4 +40,7 @@ public class MoveSheep : MonoBehaviour
             rigidBody.position = pos;
         }
     }
+     void Awake() { 
+        Application.targetFrameRate = 30;
+     }
 }

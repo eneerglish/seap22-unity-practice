@@ -6,35 +6,38 @@ public class MoveSheep : MonoBehaviour
 {
     // privateのメンバ は一般にキャメルケース (最初小文字 + 大文字区切り)
     private Rigidbody2D rigidBody = null;
+    private GroundCheck groundCheck;
     public float speed;
+    public float jumpForce;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Updateでいちいち取得すると重いので,代入して保存しておく
+        // Updateでいちいち取得すると重いので, 代入して保存しておく
         rigidBody = this.GetComponent<Rigidbody2D>();
-
+        groundCheck = GameObject.Find("GroundCheck").GetComponent<GroundCheck>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        // 変数を作る (メソッド内のみで使う変数)
-        // rigidbodyの物理演算を使うためにはtransformではなくrigidbodyを使って移動する必要がある。
+    { 
         Vector2 pos = rigidBody.position;
 
-        //キー入力によってposの値を変える
-
-        // 左に移動
-        if (Input.GetKey (KeyCode.A)) {
-            pos += new Vector2(-speed, 0.0f);
-        }
-        // 右に移動
-        if (Input.GetKey (KeyCode.D)) {
-            pos += new Vector2(speed, 0.0f);
+        if (Input.GetKey (KeyCode.D)) 
+        {
+            pos.x += speed;
         }
 
-        // position を更新
-        rigidBody.position = pos;
+        if (Input.GetKey (KeyCode.A))
+        {
+            pos.x -= speed;
+        }
+
+        if (groundCheck.isGround && Input.GetKeyDown (KeyCode.Space)) 
+        {
+            rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        } else {
+            rigidBody.position = pos;
+        }
     }
 }

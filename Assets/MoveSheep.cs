@@ -27,17 +27,19 @@ public class MoveSheep : MonoBehaviour
         Vector2 pos = rigidBody.position;
 
         //キー入力によってposの値を変える
-
+        //Time.deltaTimeをかけることで、フレームレートに関係なく一定の変化量にできる
         // 左に移動
         if (Input.GetKey (KeyCode.A)) {
-            pos += new Vector2(-speed, 0.0f);
+            pos += new Vector2(-speed * Time.deltaTime, 0.0f);
         }
         // 右に移動
         if (Input.GetKey (KeyCode.D)) {
-            pos += new Vector2(speed, 0.0f);
+            pos += new Vector2(speed * Time.deltaTime, 0.0f);
         }
 
         //ジャンプ
+        //地面に当たっているかつキーが押されたとき
+        //GetKeyDownはキーが押されたとき一回だけtrueになる
         if (Input.GetKeyDown (KeyCode.Space) && groundCheck.isGround) {
             //AddForceは物理演算でオブジェクトに力を加えるメソッド
             //ForceModeは力の加え方のオプション Impulseは瞬間的に力を与える

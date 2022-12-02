@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507efa0ed5dfdc749ae67dbdf80caece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGround: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,4 +3197,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c546503a781b447955da6a7cb38e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 3
+  jump: 5

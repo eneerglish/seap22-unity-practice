@@ -7,6 +7,7 @@ public class MoveSheep : MonoBehaviour
     // privateのメンバ は一般にキャメルケース (最初小文字 + 大文字区切り)
     private Rigidbody2D rigidBody = null;
     private GroundCheck groundCheck = null;
+    private SpriteRenderer spriteRenderer = null;
     public float speed;
     public float jump;
 
@@ -16,7 +17,7 @@ public class MoveSheep : MonoBehaviour
         // Updateでいちいち取得すると重いので,代入して保存しておく
         rigidBody = this.GetComponent<Rigidbody2D>();
         groundCheck = this.GetComponentInChildren<GroundCheck>();
-
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,10 +31,12 @@ public class MoveSheep : MonoBehaviour
         //Time.deltaTimeをかけることで、フレームレートに関係なく一定の変化量にできる
         // 左に移動
         if (Input.GetKey (KeyCode.A)) {
+            spriteRenderer.flipX = true;
             pos += new Vector2(-speed * Time.deltaTime, 0.0f);
         }
         // 右に移動
         if (Input.GetKey (KeyCode.D)) {
+            spriteRenderer.flipX = false;
             pos += new Vector2(speed * Time.deltaTime, 0.0f);
         }
 

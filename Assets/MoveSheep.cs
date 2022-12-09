@@ -31,12 +31,12 @@ public class MoveSheep : MonoBehaviour
         //Time.deltaTimeをかけることで、フレームレートに関係なく一定の変化量にできる
         // 左に移動
         if (Input.GetKey (KeyCode.A)) {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
             pos += new Vector2(-speed * Time.deltaTime, 0.0f);
         }
         // 右に移動
         if (Input.GetKey (KeyCode.D)) {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
             pos += new Vector2(speed * Time.deltaTime, 0.0f);
         }
 

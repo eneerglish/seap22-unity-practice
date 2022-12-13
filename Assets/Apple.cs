@@ -23,31 +23,8 @@ public class Apple : MonoBehaviour
     IEnumerator changeSpeed(Collider2D sheep)
     {
         MoveSheep moveSheep =  sheep.GetComponent<MoveSheep>();
-        SpriteRenderer spriteRenderer = sheep.GetComponent<SpriteRenderer>();
-        changeColor(spriteRenderer);
         moveSheep.speed *= rate;
-        yield return new WaitForSeconds(5.0f);
-        changeColor(spriteRenderer);
+        yield return new WaitForSeconds(3.0f);
         moveSheep.speed /= rate;
-    }
-
-    void changeColor(SpriteRenderer spriteRenderer)
-    {
-        Debug.Log(spriteRenderer.color);
-        if(rate >= 1f) {
-            if (spriteRenderer.color.r >= 1f) {
-                spriteRenderer.color *= new Color(1f, 1f/4f, 1f/4f);
-            }
-            else {
-                spriteRenderer.color *= new Color(4f, 4f, 1f);
-            }
-        } else {
-            if (spriteRenderer.color.b >= 1f) {
-                spriteRenderer.color *= new Color(1f/4f, 1f/4f, 1f);
-            }
-            else {
-                spriteRenderer.color *= new Color(1f, 4f, 4f);
-            }
-        }
     }
 }

@@ -22,6 +22,6 @@ public class TimeScore : MonoBehaviour
         totalTime += Time.deltaTime;
         minutes = (int)(totalTime / 60);
         seconds = (int)(totalTime % 60);
-        scoreText.text = minutes.ToString() + ":" + seconds.ToString();
+        scoreText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
     }
 }

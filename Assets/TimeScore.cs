@@ -7,6 +7,7 @@ public class TimeScore : MonoBehaviour
 {
     private Text scoreText = null;
     private float totalTime = 0f;
+    private int minutes = 0;
     private int seconds = 0;
 
     // Start is called before the first frame update
@@ -19,7 +20,8 @@ public class TimeScore : MonoBehaviour
     void Update()
     {
         totalTime += Time.deltaTime;
-        seconds = (int)totalTime;
-        scoreText.text = seconds.ToString();
+        minutes = (int)(totalTime / 60);
+        seconds = (int)(totalTime % 60);
+        scoreText.text = minutes.ToString() + ":" + seconds.ToString();
     }
 }

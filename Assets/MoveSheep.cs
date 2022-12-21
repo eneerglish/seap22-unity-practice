@@ -8,6 +8,7 @@ public class MoveSheep : MonoBehaviour
     private Rigidbody2D rigidBody = null;
     private GroundCheck groundCheck = null;
     private SpriteRenderer spriteRenderer = null;
+    private Animator anim = null;
     public float speed;
     public float jump;
 
@@ -18,6 +19,7 @@ public class MoveSheep : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody2D>();
         groundCheck = this.GetComponentInChildren<GroundCheck>();
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,15 +33,20 @@ public class MoveSheep : MonoBehaviour
         //Time.deltaTimeをかけることで、フレームレートに関係なく一定の変化量にできる
         // 左に移動
         if (Input.GetKey (KeyCode.A)) {
+            anim.SetBool("run", true);
             spriteRenderer.flipX = false;
             pos += new Vector2(-speed * Time.deltaTime, 0.0f);
         }
         // 右に移動
         if (Input.GetKey (KeyCode.D)) {
+            anim.SetBool("run", true);
             spriteRenderer.flipX = true;
             pos += new Vector2(speed * Time.deltaTime, 0.0f);
         }
-
+        //右にも左にも移動していない時
+        if (!Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.A)) {
+            anim.SetBool("run", false);
+        }
         //ジャンプ
         //地面に当たっているかつキーが押されたとき
         //GetKeyDownはキーが押されたとき一回だけtrueになる
